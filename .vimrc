@@ -9,7 +9,7 @@ set lazyredraw
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set number relativenumber 
+set number relativenumber
 "This makes my python files have spaces instead of tabs but leaves everybody else the same
 "autocmd Filetype python setlocal expandtab
 set expandtab
@@ -44,7 +44,8 @@ inoremap jk <esc>
 
 nnoremap <space> <nop>
 
-
+"Terminal commands
+:tnoremap <Esc> <C-\><C-n>
 
 ""Leader commands
 let mapleader= " "
@@ -56,7 +57,7 @@ nnoremap <leader><down> ddp
 nnoremap <leader>c cc
 nnoremap <leader>d dd
 "removes trailing whitespace
-nnoremap <leader>w :%s/\s\+$//e<CR> 
+nnoremap <leader>w :%s/\s\+$//e<CR>
 "shows whitespace
 nnoremap <leader>W :set list! list?<CR>
 "Pastemode stuff
@@ -70,6 +71,8 @@ nnoremap <leader>/ :noh<CR>
 
 nnoremap <leader>; :
 
+"toggle line numbers
+nnoremap <leader>n :set invnumber invrelativenumber <CR>
 
 
 "Plugin commands
@@ -78,10 +81,29 @@ map <leader>o :NERDTreeToggle<CR>
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+"git gutter stuff
+nnoremap <leader>g :GitGutterFold<cr>
 
 "Cycling through tabs for nerd tree
-map  <leader>L <C-W><right>
-map  <leader>H  <C-W><left>
+nnoremap  <M-j> <C-W><C-J>
+nnoremap  <M-k> <C-W><C-K>
+nnoremap  <M-l> <C-W><C-L>
+nnoremap  <M-h> <C-W><C-H>
+
+
+"Changing split sizes
+
+nnoremap  <C-J> <C-W>-
+nnoremap  <C-K> <C-W>+
+nnoremap  <C-L> <C-W><
+nnoremap  <C-H> <C-W>>
+
+
+
+
+
+set splitbelow
+set splitright
 
 
 
@@ -105,6 +127,7 @@ nmap <space>y <plug>(vimtex-compile-toggle)
 "ale stuff
 let g:ale_sign_warning ='🗲'
 let g:ale_linters = {'python': ['pyflakes']}
+
 
 "fzf stuff
 set rtp+=~/.fzf
