@@ -1,2 +1,2 @@
 # vimrc
-vimrc file
+Good vimrc file

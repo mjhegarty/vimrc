@@ -10,18 +10,18 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set number relativenumber
-"This makes my python files have spaces instead of tabs but leaves everybody else the same
-"autocmd Filetype python setlocal expandtab
 set expandtab
 
 
 syntax on
 set t_Co=256
 "colorscheme potato
-colorscheme iceberg
+"colorscheme seoul256
+colorscheme space_vim_theme
 hi Search cterm=NONE ctermfg=Black ctermbg=DarkBlue
 hi Visual cterm=NONE ctermfg=white ctermbg=DarkBlue
-hi ALEWarning cterm=NONE ctermfg=white ctermbg=DarkYellow
+hi ALEWarning cterm=undercurl guisp=DarkYellow
+hi ALEError cterm=undercurl guisp=DarkRed
 hi CursorLine   cterm=NONE ctermbg=black
 
 let &t_ut=''
@@ -34,12 +34,17 @@ endif
 
 
 
+
+"Lang specific stuff
+au BufEnter *.md :setlocal spell spelllang=en_us
+au BufEnter *.tex :setlocal spell spelllang=en_us 
+
+
 "Powerline stuff
 
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized_flood'
-
+let g:airline_theme='angr'
 inoremap jk <esc>
 
 nnoremap <space> <nop>
@@ -126,11 +131,10 @@ nmap <space>y <plug>(vimtex-compile-toggle)
 
 "ale stuff
 let g:ale_sign_warning ='🗲'
+
 let g:ale_linters = {'python': ['pyflakes']}
 
 
-"fzf stuff
-set rtp+=~/.fzf
 
 
 " Load all plugins now.
